@@ -1,2 +1,2 @@
 # HomeBurrow
-WebApp to visualize and manage IOT devices written in React.js and Go
+WebApp to visualize and manage IOT devices written in Next.js and Go
