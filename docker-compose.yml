@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  server:
+    build:
+      context: .
+      target: go_back
+    image: hb_backend:latest
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - 8085:8080
