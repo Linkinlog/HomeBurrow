@@ -3,9 +3,11 @@ services:
   server:
     build:
       context: .
-      target: go_back
+      target: hb_back
     image: hb_backend:latest
     volumes:
       - ./backend:/usr/src/app
+      - ./docker-entrypoint.sh:/usr/src/app/docker-entrypoint.sh
     ports:
       - 8085:8080
+    command: go

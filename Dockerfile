@@ -1,21 +1,28 @@
 ARG GO_IMAGE=golang
 ARG GO_VERSION=1.18-alpine
 ARG NODE_IMAGE=node
-ARG NODE_VERSION=16.17.0-alpine
+ARG NODE_VERSION=current-alpine
 
 # Create image for backend
-FROM ${GO_IMAGE}:${GO_VERSION} as go_back
+FROM ${GO_IMAGE}:${GO_VERSION} as hb_back
 
 # Specify the dir to run the following commands in relative to the image
 WORKDIR /usr/src/app
 
-# Copy Go configs and run Go commands/compiler
+# Copy data and run Go commands/compiler
+COPY ./backend ./
+RUN go install github.com/cosmtrek/air@latest && go mod download && go mod verify
 
-COPY backend/go.* ./
+COPY docker-entrypoint.sh ./
+ENTRYPOINT [ "/usr/src/app/docker-entrypoint.sh" ]
 
-RUN go mod download && go mod verify
+FROM ${NODE_IMAGE}:${NODE_VERSION} as hb_front
 
-COPY ./backend .
-RUN go build -v -o /usr/local/bin/app ./...
+WORKDIR /usr/src/app
 
-CMD ["app"]
+COPY frontend/node_modules ./
+
+RUN npm i && npm run dev
+
+COPY docker-entrypoint.sh ./
+ENTRYPOINT [ "/usr/src/app/docker-entrypoint.sh" ]
