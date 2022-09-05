@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  server:
+    build:
+      context: .
+      target: hb_back
+    image: hb_backend:latest
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - 8085:8080
+    command: go
+  client:
+    build:
+      context: .
+      target: hb_front
+    image: hb_frontend:latest
+    volumes:
+      - ./frontend:/usr/src/app
+    ports:
+      - 8086:3000
+    command: next
