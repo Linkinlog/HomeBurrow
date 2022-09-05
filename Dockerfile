@@ -10,19 +10,22 @@ FROM ${GO_IMAGE}:${GO_VERSION} as hb_back
 WORKDIR /usr/src/app
 
 # Copy data and run Go commands/compiler
-COPY ./backend ./
-RUN go install github.com/cosmtrek/air@latest && go mod download && go mod verify
-
-COPY docker-entrypoint.sh ./
-ENTRYPOINT [ "/usr/src/app/docker-entrypoint.sh" ]
+COPY docker-entrypoint.sh /
+COPY backend ./
+RUN go mod download \
+    && go mod verify \
+    && go install github.com/cosmtrek/air@latest \
+    && chmod u+x /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 FROM ${NODE_IMAGE}:${NODE_VERSION} as hb_front
 
 WORKDIR /usr/src/app
 
-COPY frontend/node_modules ./
+COPY docker-entrypoint.sh /
+COPY frontend/package-lock.json frontend/package.json ./
 
-RUN npm i && npm run dev
+RUN npm i \
+    && chmod u+x /docker-entrypoint.sh
 
-COPY docker-entrypoint.sh ./
-ENTRYPOINT [ "/usr/src/app/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/docker-entrypoint.sh" ]

@@ -9,3 +9,8 @@ if [[ $CONTAINER == "go" ]]; then
     go build -v -o /usr/local/bin/app ./...
     air
 fi
+
+if [[ $CONTAINER == "next" ]]; then
+    echo "Spinning up Next.js frontend"
+    npm run dev
+fi

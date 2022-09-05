@@ -7,7 +7,16 @@ services:
     image: hb_backend:latest
     volumes:
       - ./backend:/usr/src/app
-      - ./docker-entrypoint.sh:/usr/src/app/docker-entrypoint.sh
     ports:
       - 8085:8080
     command: go
+  client:
+    build:
+      context: .
+      target: hb_front
+    image: hb_frontend:latest
+    volumes:
+      - ./frontend:/usr/src/app
+    ports:
+      - 8086:3000
+    command: next
