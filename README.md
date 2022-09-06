@@ -1,5 +1,5 @@
 # HomeBurrow
-WebApp to visualize and manage IOT devices written in React, Next.js and Go
+WebApp to visualize and manage IOT devices written in React, TypeScript, Next.js and Go
 
 
 # Local Development
@@ -10,4 +10,4 @@ Currently local development happens though Docker
 - Backend runs on port 8085
 
 # Authors
-HomeBurrow was created by mitrerogelio and linkinlogs.
+HomeBurrow was created by mitrerogelio and linkinlogs
