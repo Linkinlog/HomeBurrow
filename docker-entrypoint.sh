@@ -6,7 +6,6 @@ CONTAINER=$1
 
 if [[ $CONTAINER == "go" ]]; then
     echo "Compiling Go backend"
-    go build -v -o /usr/local/bin/app/api/ ./...
     air
 fi
 
