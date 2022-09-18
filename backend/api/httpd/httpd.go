@@ -1,17 +1,19 @@
-package main
+package httpd
 
 import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"HomeBurrow/api/httpd/routes"
 )
 
-func main() {
+func Httpd() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello world"))
-	})
+
+	r.Route("/api", func(r chi.Router) {
+		r.Get("/", routes.Landing)
+	} )
 	http.ListenAndServe(":8080", r)
 }
