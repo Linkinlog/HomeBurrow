@@ -28,6 +28,7 @@ COPY docker-entrypoint.sh /
 COPY frontend/package-lock.json frontend/package.json ./
 
 RUN npm i \
+    && npm i -g next \
     && chmod u+x /docker-entrypoint.sh
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
