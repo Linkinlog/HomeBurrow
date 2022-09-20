@@ -19,6 +19,7 @@ WebApp to visualize and manage IOT devices written in React, TypeScript, Next.js
 ## Client Commands
 - `make client-exec` will run `sh`
 - `make npm PKG={XYZ}` will run `npm i {XYZ}`
+- `make npx PKG={XYZ}` will run `npx {XYZ}`
 - `make rebuild` will run `docker compose down && docker compose up --build`
 # Authors
-HomeBurrow was created by mitrerogelio and linkinlogs
+HomeBurrow was created by mitrerogelio and linkinlog
