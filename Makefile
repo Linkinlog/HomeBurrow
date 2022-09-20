@@ -29,4 +29,7 @@ npx:
 rebuild:
 	docker compose down && docker compose up --build
 
-.PHONY: server-exec go get tidy client-exec npm npx rebuild
+quietbuild:
+	make rebuild &>/dev/null &
+
+.PHONY: server-exec go get tidy client-exec npm npx rebuild quietbuild
