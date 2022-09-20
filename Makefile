@@ -22,8 +22,11 @@ client-exec:
 	$(CLIENT_COMMAND) sh
 npm:
 	$(CLIENT_COMMAND) npm i $(CMD)
+	
+npx:
+	$(CLIENT_COMMAND) npx $(CMD)	
 
 rebuild:
 	docker compose down && docker compose up --build
 
-.PHONY: server-exec go get tidy client-exec npm rebuild
+.PHONY: server-exec go get tidy client-exec npm npx rebuild
