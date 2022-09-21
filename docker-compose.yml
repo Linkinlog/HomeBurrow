@@ -2,47 +2,47 @@ version: '3.9'
 services:
   server:
     env_file:
-      - ./backend/.env
+      - ./docker/db/.env
+      - ./docker/server/.env
     build:
       context: .
       target: hb_back
     image: hb_backend:latest
     volumes:
       - ./backend:/usr/src/app
+      - ./docker/server/docker-entrypoint-init.d:/docker-entrypoint-init.d
     ports:
       - 8085:8080
     command: go
+    depends_on:
+      - db
 
   client:
+    env_file:
+      - ./docker/client/.env
     build:
       context: .
       target: hb_front
     image: hb_frontend:latest
     volumes:
       - ./frontend:/usr/src/app
+      - ./docker/client/docker-entrypoint-init.d:/docker-entrypoint-init.d
     ports:
       - 8086:3000
     command: next
+    depends_on:
+      - server
 
   db:
-    image: mariadb
+    image: mysql:debian
     restart: always
     env_file:
-      - ./backend/.env
-    command:
-      - mysqld
-      - --character-set-server=utf8
-      - --collation-server=utf8_unicode_ci
+      - ./docker/db/.env
     ports:
       - 8087:3306
     volumes:
       - homeburrow-db:/var/lib/mysql
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8088:8080
+      - ./docker/db/docker-entrypoint-init.d:/docker-entrypoint-init.d
 
 volumes:
   homeburrow-db:

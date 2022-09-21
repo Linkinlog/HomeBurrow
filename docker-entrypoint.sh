@@ -13,3 +13,5 @@ if [[ $CONTAINER == "next" ]]; then
     echo "Spinning up Next.js frontend"
     npm run dev
 fi
+
+run-parts /docker-entrypoint-init.d

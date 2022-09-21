@@ -9,6 +9,10 @@ ifdef GO
 	CMD += $(GO)
 endif
 
+ifdef QUIET
+	QUIET = -d
+endif
+
 server-exec:
 	$(SERVER_COMMAND) sh
 go:
@@ -27,7 +31,7 @@ npx:
 	$(CLIENT_COMMAND) npx $(CMD)	
 
 rebuild:
-	docker compose down && docker compose up --build
+	docker compose down && docker compose up --build $(QUIET)
 
 quietbuild:
 	make rebuild &>/dev/null &

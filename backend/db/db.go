@@ -16,10 +16,4 @@ func Connect() {
 	db.SetConnMaxLifetime(time.Minute * 3)
 	db.SetMaxOpenConns(10)
 	db.SetMaxIdleConns(10)
-	// Prepare statement for reading data
-	stmtOut, err := db.Prepare("SELECT * FROM sys")
-	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
-	}
-	defer stmtOut.Close()
 }
