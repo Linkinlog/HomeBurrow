@@ -26,7 +26,10 @@ npm:
 npx:
 	$(CLIENT_COMMAND) npx $(CMD)	
 
+tailwind:
+	$(CLIENT_COMMAND) npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch	
+
 rebuild:
 	docker compose down && docker compose up --build
 
-.PHONY: server-exec go get tidy client-exec npm npx rebuild
+.PHONY: server-exec go get tidy client-exec npm npx tailwind rebuild
