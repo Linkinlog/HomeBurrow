@@ -21,6 +21,8 @@ get:
 	$(SERVER_COMMAND) go get $(CMD)
 tidy:
 	$(SERVER_COMMAND) go mod tidy
+test:
+	$(SERVER_COMMAND) go test ./...
 
 client-exec:
 	$(CLIENT_COMMAND) sh
@@ -42,4 +44,4 @@ rebuild:
 quietbuild:
 	make rebuild &>/dev/null &
 
-.PHONY: server-exec go get tidy client-exec npm npx down up rebuild quietbuild
+.PHONY: server-exec go get tidy test client-exec npm npx down up rebuild quietbuild
