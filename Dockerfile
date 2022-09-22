@@ -25,5 +25,9 @@ FROM ${NODE_IMAGE}:${NODE_VERSION} as hb_front
 WORKDIR /usr/src/app
 
 COPY docker-entrypoint.sh /
+COPY ["frontend/package.json", "frontend/package-lock.json", "/usr/src/app/"]
+
+RUN npm install \
+    && chmod u+x /docker-entrypoint.sh
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]

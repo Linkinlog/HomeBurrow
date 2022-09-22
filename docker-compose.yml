@@ -13,7 +13,7 @@ services:
       - ./docker/server/docker-entrypoint-init.d:/docker-entrypoint-init.d
     ports:
       - 8085:8080
-    command: go
+    command: server
     depends_on:
       - db
 
@@ -26,10 +26,11 @@ services:
     image: hb_frontend:latest
     volumes:
       - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules/
       - ./docker/client/docker-entrypoint-init.d:/docker-entrypoint-init.d
     ports:
       - 8086:3000
-    command: next
+    command: client
     depends_on:
       - server
 
@@ -42,7 +43,7 @@ services:
       - 8087:3306
     volumes:
       - homeburrow-db:/var/lib/mysql
-      - ./docker/db/docker-entrypoint-init.d:/docker-entrypoint-init.d
+      - ./docker/db/docker-entrypoint-init.d:/docker-entrypoint-initdb.d
 
 volumes:
   homeburrow-db:

@@ -30,10 +30,16 @@ npm:
 npx:
 	$(CLIENT_COMMAND) npx $(CMD)	
 
+down:
+	docker compose down
+
+up:
+	docker compose up --build $(QUIET)
+
 rebuild:
-	docker compose down && docker compose up --build $(QUIET)
+	make down && make up
 
 quietbuild:
 	make rebuild &>/dev/null &
 
-.PHONY: server-exec go get tidy client-exec npm npx rebuild quietbuild
+.PHONY: server-exec go get tidy client-exec npm npx down up rebuild quietbuild

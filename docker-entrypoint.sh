@@ -4,12 +4,12 @@ set -e
 
 CONTAINER=$1
 
-if [[ $CONTAINER == "go" ]]; then
+if [[ $CONTAINER == "server" ]]; then
     echo "Compiling Go backend"
     air
 fi
 
-if [[ $CONTAINER == "next" ]]; then
+if [[ $CONTAINER == "client" ]]; then
     echo "Spinning up Next.js frontend"
     npm run dev
 fi
