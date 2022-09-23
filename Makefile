@@ -9,6 +9,10 @@ ifdef GO
 	CMD += $(GO)
 endif
 
+ifdef QUIET
+	QUIET = -d
+endif
+
 server-exec:
 	$(SERVER_COMMAND) sh
 go:
@@ -17,6 +21,8 @@ get:
 	$(SERVER_COMMAND) go get $(CMD)
 tidy:
 	$(SERVER_COMMAND) go mod tidy
+test:
+	$(SERVER_COMMAND) go test ./...
 
 client-exec:
 	$(CLIENT_COMMAND) sh
@@ -26,7 +32,16 @@ npm:
 npx:
 	$(CLIENT_COMMAND) npx $(CMD)	
 
-rebuild:
-	docker compose down && docker compose up --build
+down:
+	docker compose down
 
-.PHONY: server-exec go get tidy client-exec npm npx rebuild
+up:
+	docker compose up --build $(QUIET)
+
+rebuild:
+	make down && make up
+
+quietbuild:
+	make rebuild &>/dev/null &
+
+.PHONY: server-exec go get tidy test client-exec npm npx down up rebuild quietbuild
