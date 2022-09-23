@@ -35,7 +35,7 @@ services:
       - server
 
   db:
-    image: mysql:debian
+    image: mariadb:latest
     restart: always
     env_file:
       - ./docker/db/.env
