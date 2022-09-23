@@ -19,3 +19,4 @@
 **/.env
 **/kill
 **/tmp
+backend/config/config.go
