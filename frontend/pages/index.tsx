@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <Head>
         <title>HomeBurrow - Dashboard</title>
         <meta name="description" content="HomeBurrow is an open-source home automation platform for the web." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/homeburrow.ico" />
       </Head>
         
       <nav>
@@ -28,13 +28,11 @@ const Home: NextPage = () => {
       </nav>
 
 
-      // Clickable profile page
       <a href='#'>
         <h2>User</h2>
         <img src='#' />
       </a>
 
-      // Display when selected from left menu only
       <section>
         <h4>Temperature Sensors</h4>
 
@@ -46,11 +44,9 @@ const Home: NextPage = () => {
         <p>Current Status:</p>
       </section>
 
-      // Display when selected from left menu only
       <section>
         <h4>Relay Switches</h4>
 
-        // Loop for each existing sensor
         <h5>Sensor 1</h5>
         <p>Brand:</p>
         <p>Model:</p>
