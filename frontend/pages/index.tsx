@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>HomeBurrow - Dashboard</title>
         <meta name="description" content="HomeBurrow is an open-source home automation platform for the web." />
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         <p>Current Status:</p>
       </section>
       
-    </div>
+    </>
   )
 }
 
