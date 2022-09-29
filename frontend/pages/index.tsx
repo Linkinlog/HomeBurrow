@@ -11,48 +11,48 @@ const Home: NextPage = () => {
         <link rel="icon" href="/homeburrow.ico" />
       </Head>
 
-      <section className='bg-red-400 flex row h-screen w-full'>    
-          <nav className='bg-amber-200 relative left-0 w-1/3'>
-          <h1>User's System</h1>
-          <article>
-            <h3>Temperature Sensors</h3>
-            <a href='#'>Sensor 1</a>
-            <a href='#'>Sensor 2</a>
-            <a href='#'>Sensor 3</a>
-          </article>
-          <article>
-            <h3>Relay Switches</h3>
-            <a href='#'>Sensor 1</a>
-            <a href='#'>Sensor 2</a>
-            <a href='#'>Sensor 3</a>
-          </article>
+      <section className='flex flex-row justify-between h-screen w-full'>    
+
+          <nav className='bg-zinc-300 margin-0 w-1/5 flex flex-col justify-start items-center'>
+            <h1 className='text-5xl self-start m-10'>User's System</h1>
+
+            <section className='h-2/4 flex flex-col justify-evenly items-start'>
+              <a href='#' className='text-3xl block'>Sensors</a>
+              <a href='#' className='text-3xl block'>Ecosystem</a>
+              <a href='#' className='text-3xl block'>Support</a>
+              <a href='#' className='text-3xl block'>Profile</a>
+            </section>
+
         </nav>
 
+        <main className='flex flex-col items-start justify-around w-2/3'>
 
-        <a href='#'>
-          <h2>User</h2>
-          <img src='#' />
-        </a>
+          <a href='#' className='fixed top-5 right-28 flex flex-row justify-start items-center w-12'>
+            <h2 className='text-2xl'>User</h2>
+            <img src='https://cdn-icons-png.flaticon.com/512/1946/1946429.png' className='ml-4' />
+          </a>
 
-        <section>
-          <h4>Temperature Sensors</h4>
+          <section className='w-1/5 ml-28 h-2/5 flex flex-col justify-evenly pl-4 shrink'>
+            <h4 className='text-4xl'>Temperature Sensors</h4>
 
-          <h5>Sensor 1</h5>
-          <p>Brand:</p>
-          <p>Model:</p>
-          <p>Install Date:</p>
-          <p>Current Status:</p>
-        </section>
+            <h5 className='text-3xl'>Sensor 1</h5>
+            <p>Brand:</p>
+            <p>Model:</p>
+            <p>Install Date:</p>
+            <p>Current Status:</p>
+          </section>
 
-        <section>
-          <h4>Relay Switches</h4>
+          <section className='w-1/5 ml-28 h-2/5 flex flex-col justify-evenly pl-4 shrink'>
+            <h4 className='text-4xl'>Relay Switches</h4>
 
-          <h5>Sensor 1</h5>
-          <p>Brand:</p>
-          <p>Model:</p>
-          <p>Install Date:</p>
-          <p>Current Status:</p>
-        </section>
+            <h5 className='text-3xl'>Sensor 1</h5>
+            <p>Brand:</p>
+            <p>Model:</p>
+            <p>Install Date:</p>
+            <p>Current Status:</p>
+          </section>
+          
+        </main>
       </section>
     </>
   )
