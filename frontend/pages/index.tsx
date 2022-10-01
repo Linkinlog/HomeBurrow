@@ -20,7 +20,6 @@ const Home: NextPage = () => {
               <a href='#' className='text-3xl block'>Sensors</a>
               <a href='#' className='text-3xl block'>Ecosystem</a>
               <a href='#' className='text-3xl block'>Support</a>
-              <a href='#' className='text-3xl block'>Profile</a>
             </section>
 
         </nav>
