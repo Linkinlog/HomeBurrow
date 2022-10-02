@@ -14,5 +14,5 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
       - name: Test
         run: 
-          docker run --network container:homeburrow-client-1 appropriate/curl -4 --retry 4 --retry-connrefused localhost:3000
+          docker run --network container:homeburrow-client appropriate/curl -4 --retry 4 --retry-connrefused localhost:3000
           docker run --network container:homeburrow-server-1 appropriate/curl -s --retry 10 --retry-connrefused localhost:8080/api
