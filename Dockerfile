@@ -4,7 +4,7 @@ ARG NODE_IMAGE=node
 ARG NODE_VERSION=current
 
 # Create image for backend
-FROM ${GO_IMAGE}:${GO_VERSION} as hb_back
+FROM ${GO_IMAGE}:${GO_VERSION} as hb_server
 
 # Specify the dir to run the following commands in relative to the image
 WORKDIR /usr/src/app
@@ -20,7 +20,7 @@ RUN go mod download \
 # ENTRYPOINT [ "tail", "-f", "/dev/null" ]
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
-FROM ${NODE_IMAGE}:${NODE_VERSION} as hb_front
+FROM ${NODE_IMAGE}:${NODE_VERSION} as hb_client
 
 WORKDIR /usr/src/app
 

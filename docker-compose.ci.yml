@@ -1,0 +1,13 @@
+services:
+  server:
+    env_file:
+      - ./docker/db/.env.example
+      - ./docker/server/.env.example
+
+  client:
+    env_file:
+      - ./docker/client/.env
+
+  db:
+    env_file:
+      - ./docker/db/.env
