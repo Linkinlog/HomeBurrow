@@ -14,5 +14,5 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
       - name: Test
         run: 
-          docker run --network container:client appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8086/
-          docker run --network container:client appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8085/api
+          docker run --network container:hb_frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8086/
+          docker run --network container:hb_frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8085/api
