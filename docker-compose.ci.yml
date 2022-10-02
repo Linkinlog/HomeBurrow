@@ -1,0 +1,22 @@
+services:
+  server:
+    env_file:
+      - ./docker/db/.env.example
+      - ./docker/server/.env.example
+    volumes:
+      - ./docker/server/docker-entrypoint-init.d:/docker-entrypoint-init.d
+    command: server
+
+  client:
+    env_file:
+      - ./docker/client/.env.example
+    volumes:
+      - ./docker/client/docker-entrypoint-init.d:/docker-entrypoint-init.d
+    command: client
+
+  db:
+    image: mariadb:latest
+    env_file:
+      - ./docker/db/.env.example
+    volumes:
+      - ./docker/db/docker-entrypoint-init.d:/docker-entrypoint-initdb.d
