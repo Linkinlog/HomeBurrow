@@ -30,4 +30,3 @@ HomeBurrow was created by mitrerogelio and linkinlog
 # Env variables
 - Currently the .env files live in their respective container folders within docker/
 - Duplicate the .env.example files as .env files
-- Change DB_USER/DB_PASS to have the db container add that user on build
