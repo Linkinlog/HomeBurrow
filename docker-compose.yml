@@ -1,13 +1,12 @@
 version: '3.9'
 services:
   server:
-    env_file:
-      - ./docker/db/.env
-      - ./docker/server/.env
     build:
       context: .
-      target: hb_back
-    image: hb_backend:latest
+      target: hb_server
+    image: hb_server:latest
+    restart: always
+    container_name: server
     volumes:
       - ./backend:/usr/src/app
       - ./docker/server/docker-entrypoint-init.d:/docker-entrypoint-init.d
@@ -18,12 +17,12 @@ services:
       - db
 
   client:
-    env_file:
-      - ./docker/client/.env
     build:
       context: .
-      target: hb_front
-    image: hb_frontend:latest
+      target: hb_client
+    image: hb_client:latest
+    restart: always
+    container_name: client
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules/
@@ -37,8 +36,7 @@ services:
   db:
     image: mariadb:latest
     restart: always
-    env_file:
-      - ./docker/db/.env
+    container_name: maria
     ports:
       - 8087:3306
     volumes:

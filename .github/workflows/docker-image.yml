@@ -1,0 +1,20 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "development" ]
+jobs:
+  HomeBurrow-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the stack
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
+      - name: Test Client
+        run: 
+          docker run --network container:client appropriate/curl -4 --retry 4 --retry-connrefused  localhost:3000
+      - name: Test Server
+        run:
+          docker run --network container:server appropriate/curl -4 --retry 4 --retry-connrefused  localhost:8080/api
