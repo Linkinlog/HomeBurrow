@@ -24,6 +24,11 @@ HomeBurrow was created by mitrerogelio and linkinlog
 - `make client-exec` will run `sh`
 - `make npm PKG={XYZ}` will run `npm i {XYZ}`
 - `make npx PKG={XYZ}` will run `npx {XYZ}`
+
+## Docker Commands
+- `make up` / `make down` will run `docker compose up` / `docker compose down`
+- `make duke_nukem` will down all containers, remove all images/containers/volumes assosciated with homeburrow and then rebuild
+- `make quietbuild` will rebuild with no output
 - `make rebuild` will run `docker compose down && docker compose up --build`
   - Run `export QUIET=true` to daemonize docker compose up
 
