@@ -6,8 +6,8 @@ services:
 
   client:
     env_file:
-      - ./docker/client/.env
+      - ./docker/client/.env.example
 
   db:
     env_file:
-      - ./docker/db/.env
+      - ./docker/db/.env.example
