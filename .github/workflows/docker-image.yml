@@ -13,5 +13,5 @@ jobs:
       - name: Build the stack and test
         run: 
           docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
-          docker compose exec server curl localhost:3000
-          docker compose exec server curl localhost:8080/api
+          docker-compose exec server curl localhost:3000
+          docker-compose exec server curl localhost:8080/api
