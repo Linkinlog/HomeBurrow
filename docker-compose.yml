@@ -3,8 +3,9 @@ services:
   server:
     build:
       context: .
-      target: hb_back
-    image: hb_backend:latest
+      target: hb_server
+    image: hb_server:latest
+    container_name: server
     volumes:
       - ./backend:/usr/src/app
     ports:
@@ -15,8 +16,9 @@ services:
   client:
     build:
       context: .
-      target: hb_front
-    image: hb_frontend:latest
+      target: hb_client
+    image: hb_client:latest
+    container_name: client
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules/

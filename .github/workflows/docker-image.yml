@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build the stack and test
+      - name: Build the stack
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
+      - name: Test
         run: 
-          docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
-          docker-compose exec server curl localhost:3000
-          docker-compose exec server curl localhost:8080/api
+          docker run --network container:client appropriate/curl -4 --retry 4 --retry-connrefused localhost:3000
+          docker run --network container:server appropriate/curl -s --retry 10 --retry-connrefused localhost:8080/api

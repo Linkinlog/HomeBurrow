@@ -38,6 +38,9 @@ down:
 up:
 	docker compose up --build $(QUIET)
 
+ci:
+	docker compose -f docker-compose.yml -f docker-compose.ci.yml up --build $(QUIET)
+
 rebuild:
 	make down && make up
 
