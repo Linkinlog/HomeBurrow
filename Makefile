@@ -42,9 +42,15 @@ ci:
 	docker compose -f docker-compose.yml -f docker-compose.ci.yml up --build $(QUIET)
 
 rebuild:
-	make down && make up
+	make down
+	make up
+
+duke_nukem:
+	make down
+	docker system prune --all --volumes --filter=label=com.docker.compose.project=homeburrow
+	make up
 
 quietbuild:
 	make rebuild &>/dev/null &
 
-.PHONY: server-exec go get tidy test client-exec npm npx down up rebuild quietbuild
+.PHONY: server-exec go get tidy test client-exec npm npx down up rebuild duke_nukem quietbuild
