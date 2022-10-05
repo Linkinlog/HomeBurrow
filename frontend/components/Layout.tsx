@@ -1,7 +1,7 @@
 import Nav from './Nav'
 import Profile from './Profile'
 
-const Layout = ({ children }) => {
+const Layout = ({children}:{children:any}) => {
   return (
     <>
     <section className='flex flex-row justify-between h-screen w-full'>  
