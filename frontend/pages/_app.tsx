@@ -1,16 +1,8 @@
-import Layout from '../components/Layout'
-import type { AppProps } from 'next/app'
 import '../styles/output.css'
+import type { AppProps } from 'next/app'
 
-function MyApp({children}:{children:any}) {
-  return (
-    <>
-      <Layout>
-        {children}
-      </Layout>
-    </>
-  )
+function MyApp({ Component, pageProps }: AppProps) {
+    return <Component {...pageProps} />
 }
 
 export default MyApp
- 
